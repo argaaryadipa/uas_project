@@ -27,11 +27,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('/edit/{id}', [FormController::class, 'update']);
     Route::get('/delete/{id}', [FormController::class, 'delete']);
 
-    //crud score with relation to student
-    Route::post('/create-lapangan-tarif', [tarifController::class, 'create']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+//crud slapangan
+    Route::post('/create-lapangan-tarif', [tarifController::class, 'create']);
+    Route::get('/edit-lapangan-tarif/{id}', [tarifController::class, 'edit']);
+    Route::get('/delete-lapangan-tarif/{id}', [tarifController::class, 'delete']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
