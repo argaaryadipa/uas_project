@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 //crud slapangan
     Route::post('/create-tarif-lapangan', [tarifController::class, 'create']);
     Route::get('/edit-tarif-lapangan/{id}', [tarifController::class, 'edit']);
-    Route::post('/update-tarif-lapangan/{id}', [tarifController::class, 'update']);
+    Route::post('/edit-tarif-lapangan/{id}', [tarifController::class, 'update']);
     Route::get('/delete-lapangan-tarif/{id}', [tarifController::class, 'delete']);
 
 Route::post('/login', [AuthController::class, 'login']);
