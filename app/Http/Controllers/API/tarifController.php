@@ -18,8 +18,8 @@ class tarifController extends Controller
         $lapangan->luas_lapangan   = $request->luas_lapangan;
         $lapangan->save();
 
-        foreach ($request->list_Tarif as $key => $value) {
-            Tarif::create([
+        foreach ($request->list_tarif as $key => $value) {
+            Tarif::array([
                 'mulai' => $value['mulai'],
                 'selsai' => $value['selsai'],
                 'perjam' => $value['perjam'],
@@ -42,24 +42,25 @@ class tarifController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $tarif= Tarif::find($id)->update;
+        $Lapangan = Lapangan::find($id);
         
-        $lapangan            = new Lapangan;
-        $lapangan->nama_lapangan      = $request->nama_lapangan;
-        $lapangan->jumlah_lapangan    = $request->jumlah_lapangan;
-        $lapangan->luas_lapangan   = $request->luas_lapangan;
-        $lapangan->save();
-
-        foreach ($request->list_Tarif as $key => $value) {
+        $lapangan->update([
+           'nama_lapangan'      => $request->nama_lapangan,
+           'jumlah_lapangan'    => $request->jumlah_lapangan,
+           'luas_lapangan'      => $request->luas_lapangan
+        ]);
+        
+        Tarif::where('id_lapangan', $id)->delete();
+        
+        foreach ($request->list_tarif as $key => $value) {
             $tarif = array(
                 'mulai' => $value['mulai'],
                 'selsai' => $value['selsai'],
                 'perjam' => $value['perjam'],
                 'id_lapangan' => $lapangan->id
             );
+            $tarif = Tarif::create($tarif);
         }
-
-
 
         return response()->json([
                 'message'       => 'success',
