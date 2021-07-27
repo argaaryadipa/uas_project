@@ -9,4 +9,10 @@ class Lapangan extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    
+     public function tarif()
+    {
+        return $this->hasMany('App\Models\Tarif', 'id_lapangan');
+    }
+}
 }
