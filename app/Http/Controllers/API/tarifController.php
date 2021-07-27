@@ -69,7 +69,7 @@ class tarifController extends Controller
         $tarif = Tarif::find($id)->delete();
 
         return response()->json([
-                'message'       => 'data Lapangan berhasil dihapus'
+                'message'       => 'data Tarif berhasil dihapus'
             ], 200);
     }
 }
