@@ -31,8 +31,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 //crud slapangan
-    Route::post('/create-lapangan-tarif', [tarifController::class, 'create']);
-    Route::get('/edit-lapangan-tarif/{id}', [tarifController::class, 'edit']);
+    Route::post('/create-tarif-lapangan', [tarifController::class, 'create']);
+    Route::get('/edit-tarif-lapangan/{id}', [tarifController::class, 'edit']);
+    Route::post('/update-tarif-lapangan/{id}', [tarifController::class, 'update']);
     Route::get('/delete-lapangan-tarif/{id}', [tarifController::class, 'delete']);
 
 Route::post('/login', [AuthController::class, 'login']);
